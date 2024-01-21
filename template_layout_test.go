@@ -1,7 +1,6 @@
 package belajargolangweb
 
 import (
-	"embed"
 	"fmt"
 	"html/template"
 	"io"
@@ -60,11 +59,8 @@ func TestTemplateLayoutParseGlob(t *testing.T) {
 
 // Template Layout Embed Golang Web
 
-//go:embed templates/*.gohtml
-var templates1 embed.FS
-
 func TemplateLayoutEmbed(writer http.ResponseWriter, request *http.Request) {
-	t := template.Must(template.ParseFS(templates1, "templates/*.gohtml"))
+	t := template.Must(template.ParseFS(templates, "templates/*.gohtml"))
 
 	t.ExecuteTemplate(writer, "layout", map[string]interface{}{
 		"Title": "Tamplate Layout",
